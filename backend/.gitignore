@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
+.env
+
+# Database
+database.sqlite
+*.sqlite
+*.sqlite3
+
+# GraphQL schema (auto-generated)
+src/schema.gql
