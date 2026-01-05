@@ -11,9 +11,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-# Using --legacy-peer-deps to resolve conflicts between express versions
-# (@as-integrations/express5 needs express 5, apollo-server-express needs express 4)
-RUN npm ci --legacy-peer-deps
+# .npmrc file configures legacy-peer-deps and other optimizations
+# Using npm install instead of npm ci for faster builds and better cache utilization
+RUN npm install
 
 # Copy source code
 COPY . .
@@ -31,8 +31,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies
-# Using --legacy-peer-deps to resolve peer dependency conflicts
-RUN npm ci --only=production --legacy-peer-deps
+# .npmrc file handles configuration
+RUN npm install --only=production
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
