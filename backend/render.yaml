@@ -1,0 +1,26 @@
+# Render deployment configuration for backend
+# This file configures how Render deploys the NestJS backend application
+# Documentation: https://render.com/docs/yaml-spec
+
+services:
+  - type: web
+    name: bookshelf-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Add these environment variables in Render dashboard:
+      # - AUTH0_DOMAIN (your Auth0 domain)
+      # - AUTH0_AUDIENCE (your Auth0 API identifier)
+      # - FRONTEND_URL (your frontend deployment URL)
+    healthCheckPath: /
+    disk:
+      name: bookshelf-db
+      mountPath: /opt/render/project/src/backend
+      sizeGB: 1
+
