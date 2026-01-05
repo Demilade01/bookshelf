@@ -1,0 +1,1 @@
+{"version":3,"file":"create-book.input.js","sourceRoot":"","sources":["../../../src/books/dto/create-book.input.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAAmD;AAc5C,IAAM,eAAe,GAArB,MAAM,eAAe;IAE1B,IAAI,CAAS;IAGb,WAAW,CAAS;CACrB,CAAA;AANY,0CAAe;AAE1B;IADC,IAAA,eAAK,GAAE;;6CACK;AAGb;IADC,IAAA,eAAK,GAAE;;oDACY;0BALT,eAAe;IAD3B,IAAA,mBAAS,GAAE;GACC,eAAe,CAM3B"}
