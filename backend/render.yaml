@@ -8,7 +8,8 @@ services:
     env: node
     plan: free
     # Since dist folder is pre-built, we only need to install production dependencies
-    buildCommand: npm install --only=production --legacy-peer-deps
+    # Using --legacy-peer-deps to handle peer dependency conflicts and ensure peer deps are installed
+    buildCommand: npm install --legacy-peer-deps
     startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
