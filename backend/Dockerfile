@@ -11,7 +11,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+# Using --legacy-peer-deps to resolve conflicts between express versions
+# (@as-integrations/express5 needs express 5, apollo-server-express needs express 4)
+RUN npm ci --legacy-peer-deps
 
 # Copy source code
 COPY . .
@@ -29,7 +31,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm ci --only=production
+# Using --legacy-peer-deps to resolve peer dependency conflicts
+RUN npm ci --only=production --legacy-peer-deps
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
